@@ -1,0 +1,17 @@
+<apex:page tabStyle="Opportunity">
+
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<apex:sectionHeader title="Data Entry Portal" subTitle="Workshops" />
+
+<apex:pageMessages />
+    <apex:ListViews type="Opportunity" />
+<script type="text/javascript">
+
+$(document).ready(function)
+    {
+        $('input[name="new"]').css('display','none');         
+    });
+
+</script>
+
+</apex:page>

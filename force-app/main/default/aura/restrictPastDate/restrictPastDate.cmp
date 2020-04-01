@@ -1,0 +1,13 @@
+<aura:component>
+    <!--add jQuery UI style CSS file and jQuery, jQuery UI javaScript files--> 
+    <ltng:require styles="{! $Resource.jQuery_UI + '/jquery-ui-1.12.1/jquery-ui.min.css'}" 
+                  scripts="{!join(',', 
+                           $Resource.jquery224 ,   
+                           $Resource.jQuery_UI + '/jquery-ui-1.12.1/jquery-ui.min.js')
+                           }" afterScriptsLoaded="{!c.scriptsLoaded}"/>
+    
+    <input type="text" class="slds-input" id="datepickerId" style = "width:20%"/>
+     <br/>
+     <br/>
+    <lightning:button variant="brand" onclick="{!c.getVal}" label="Get Date Value"/>
+</aura:component>

@@ -1,0 +1,23 @@
+<aura:component controller="handlerOpportunity" implements="flexipage:availableForAllPageTypes" access="global">
+    <aura:handler name="init" value="{!this}" action="{!c.fetchAllAccounts}"/>
+    <aura:attribute name="opportunities" type="Opportunity[]" />
+    <lightning:layout>
+    <article class="slds-card slds-m-bottom_medium">
+     <div class="slds-media__body">
+     <div>
+    <lightning:layoutitem>
+              <lightning:select aura:id="act" name="selectOpportunity" >
+                  <option value="" label="--None--">
+                  </option>
+                  <aura:iteration items="{!v.opportunities}" var="item" >
+                      <option value="{!item.Id}" label="{!item.name}" >
+                          {!item.name}
+                      </option>
+                  </aura:iteration>
+              </lightning:select>
+    </lightning:layoutitem>
+      </div>
+      </div>
+    </article>
+</lightning:layout>    
+</aura:component>

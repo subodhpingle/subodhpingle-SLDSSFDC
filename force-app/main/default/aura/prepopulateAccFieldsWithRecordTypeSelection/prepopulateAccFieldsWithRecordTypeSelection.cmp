@@ -1,0 +1,46 @@
+<aura:component controller="prepopulateAccFieldsController" implements="force:lightningQuickActionWithoutHeader,force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes" access="global">
+	<aura:handler name="init" value="{!this}" action="{!c.fetchListOfRecordTypes}"/>
+    
+    <aura:attribute name="lstOfRecordType" type="String[]" />
+    <aura:attribute name="isOpen" type="boolean" default="false" />
+    
+    <aura:html tag="style">
+        .cuf-content {
+        	padding: 0 0rem !important;
+        }
+        .slds-p-around--medium {
+        	padding: 0rem !important;
+        }       
+        .slds-modal__content{
+            overflow-y:hidden !important;
+            height:unset !important;
+            max-height:unset !important;
+        }
+    </aura:html>
+    
+    <div class="slds-is-relative">
+        <div class="modal-header slds-modal__header slds-size_1-of-1">
+            <h4 class="title slds-text-heading--medium" >
+                Select Contact Record Type
+            </h4>
+        </div>
+        <div class="slds-modal__content slds-p-around--x-small slds-size_1-of-1 slds-is-relative">
+            <div class="slds-grid slds-grid_align-center">
+				<ui:inputSelect aura:id="selectid">
+					<aura:iteration items="{!v.lstOfRecordType}" var="contact">                            
+					<ui:inputSelectOption text="{!contact}" label="{!contact}"  />
+					</aura:iteration>
+				</ui:inputSelect>
+            </div>
+        </div>
+        
+        <!-- MODAL FOOTER -->
+        <div class="modal-footer slds-modal__footer slds-size_1-of-1">
+            <div class="forceChangeRecordTypeFooter">
+                <lightning:button class="slds-button slds-button--neutral" onclick="{!c.closeModal}"> Cancel </lightning:button>
+                <lightning:button class="slds-button slds-button--brand" onclick="{!c.createRecord}"> Next </lightning:button>
+            </div>
+        </div>
+    </div>
+        
+</aura:component>

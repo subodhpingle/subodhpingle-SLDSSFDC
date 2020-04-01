@@ -1,0 +1,6 @@
+<apex:page >
+<apex:includeLightning />
+
+  $Lightning.use("c:AttachFileharnessApp", function(){});
+
+</apex:page>

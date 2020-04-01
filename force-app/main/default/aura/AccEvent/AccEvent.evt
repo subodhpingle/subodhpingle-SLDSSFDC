@@ -1,0 +1,3 @@
+<aura:event type="COMPONENT" description="Acc Event Notifier">
+    <aura:attribute name="AccRecord" type="Account"/>
+</aura:event>

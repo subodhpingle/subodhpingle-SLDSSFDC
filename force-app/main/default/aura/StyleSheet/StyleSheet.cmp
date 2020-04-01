@@ -1,0 +1,18 @@
+<aura:component >
+    <ltng:require styles="/resource/myss"/>
+    
+	<h1> SUBODH SUNIL PINGLE </h1>
+    <h1> I AM FROM NAGPUR BUT LIVES IN MUMBAI </h1>
+    
+    <div class = "main">
+        <div class = "red">
+            <h2> THIS IS RED </h2>
+        </div>        
+        <div class = "yellow">
+            <h2> THIS IS YELLLOW </h2>
+        </div>        
+        <div class = "lightblue">
+            <h2> THIS IS LIGHTBLUE </h2>
+        </div>
+    </div>
+</aura:component>

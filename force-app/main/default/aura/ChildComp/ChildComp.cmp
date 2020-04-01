@@ -1,0 +1,5 @@
+<aura:component >
+	<aura:attribute name="inputText" type="String" default="parent String"/>
+	<lightning:input type="{!v.inputText}" name="InputVal" label="Enter the text"/>
+	<lightning:button variant="brand" label="Brand action" title="Brand action" onclick="{!c.handleClick }" />
+</aura:component>

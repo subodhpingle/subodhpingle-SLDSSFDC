@@ -1,0 +1,26 @@
+<aura:component controller = 'multiSelectPicklist' implements="force:appHostable,lightning:actionOverride,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+        <!--Declare Event Handlers-->
+        <aura:handler name="init" action="{!c.doInit}" value="{!this}" description="Call doInit function on component load to get picklist values"/>
+         
+        <!--Declare Attributes-->
+    	<aura:attribute name="exp" type="Expense__c" default="{'sObject':'Expense__c','Name':'','Total_Amount__c':'','Description__c':'','Client__c':''}"/>
+        <aura:attribute name="GenreList" type="List" default="[]" description="Employee Picklist Values"/>
+    	<aura:attribute name="totalEmployees" type="Integer" description="Total selected employees are"/>
+        <aura:attribute name="selectedGenreList" type="List" default="[]" description="Selected Employees"/>
+		
+    	<lightning:textarea aura:id="desc" value="{!v.exp.Description__c}" placeholder="Enter description"/>
+    	<lightning:input type = "text" aura:id="amount" value="{!v.exp.Total_Amount__c}" placeholder="Enter amount"/>
+    
+    	<!--<div class="slds-m-around_xx-large">
+        <lightning:dualListbox aura:id="selectGenre"
+                               name="Genre"
+                               label="Select Employees"
+                               sourceLabel="Available Employees"
+                               selectedLabel="Selected Employees"
+                               options="{!v.GenreList}"
+                               value="{!v.selectedGenreList}"
+                               onchange="{!c.handleGenreChange}"/> <br/>
+        <lightning:button variant="brand" label="Create Expense" onclick="{!c.createExp}"/>
+    </div>
+	-->
+</aura:component>

@@ -1,0 +1,48 @@
+<aura:component controller="collapseSecController">
+    <aura:attribute name="accounts" type="Account[]"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+
+    <div class="slds-p-around--large">
+        <aura:iteration items="{!v.accounts}" var="acc">
+            <div class="slds-page-header" style="cursor: pointer;" onclick="{!c.sectionOne}">
+                <section class="slds-clearfix">
+                    <div class="slds-float--left ">
+                        <lightning:icon class="slds-show" aura:id="articleOne" iconName="utility:add" size="x-small" alternativeText="Indicates add"/>
+                        <lightning:icon class="slds-hide" aura:id="articleOne" iconName="utility:dash" size="x-small" alternativeText="Indicates dash"/>
+                    </div>
+                    <div class="slds-m-left--large">{!acc.Name}</div>
+                </section>
+            </div>
+            <div class="slds-hide slds-p-around--medium" aura:id="articleOne">
+                <table class="slds-table slds-table--bordered slds-table--cell-buffer slds-table--striped slds-max-medium-table--stacked-horizontal"
+                       role="grid">
+                    <thead>
+                        <tr>
+                            <th class="slds-is-sortable slds-cell-wrap" scope="col">
+                                Header Code
+                            </th>
+                           <th class="slds-is-sortable slds-cell-wrap" scope="col">
+                                Account Name
+                            </th>
+                            
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <aura:iteration items="{!acc.Contacts}" var="con">
+
+                           <tr class="slds-hint-parent">
+                                <td role="gridcell" class="slds-cell-wrap" data-label="Name">
+                                    {!acc.Name}
+                                </td>
+                                
+
+                            </tr>
+
+                        </aura:iteration>
+                    </tbody>
+                </table>
+            </div>
+        </aura:iteration>      
+
+    </div>
+</aura:component>

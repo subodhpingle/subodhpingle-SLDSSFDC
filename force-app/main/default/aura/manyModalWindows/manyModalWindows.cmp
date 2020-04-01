@@ -1,0 +1,88 @@
+<aura:component controller="recordtypeControllernew" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global">
+	
+    <aura:handler name="init" value="{!this}" action="{!c.fetchListOfRecordTypes}"/>
+    <aura:attribute name="conObj" type="Contact" default="{'sObject':'Contact','RecordTypeId':'','LastName':'','Description':''}"/>
+    
+    <aura:attribute name="recordId" type="Id" />
+    <aura:attribute name="recTypeLabel" type="String" />
+    <aura:attribute name="phone" type="String" />
+    <aura:attribute name="lstOfRecordType" type="String[]" />
+    
+    <aura:attribute name="isFirstModalOpen" type="boolean" default="false" />
+    <aura:attribute name="isSecondModalOpen" type="boolean" default="false" />
+    <aura:attribute name="isThirdModalOpen" type="boolean" default="false" />
+    
+    <!-- Testing Multi Modal Window -->
+    <div class="slds-m-around--x-large">
+        <lightning:button label="Testing Multi Modal Window" onclick="{!c.openFirstModal}" />
+    </div>
+    
+    <!-- First Model Box Start -->    
+    <aura:if isTrue="{!v.isFirstModalOpen}">
+        <div role="dialog" tabindex="-1" aria-labelledby="header43" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">
+                <div class="slds-modal__header">
+                    <button class="slds-button slds-modal__close slds-button--icon-inverse" title="Close" onclick="{!c.closeFirstModal}">
+                        X<span class="slds-assistive-text"> Cancel </span>
+                    </button>
+                    <h2 id="header43" class="slds-text-heading--medium"> New Contact </h2>
+                </div>
+                
+                <div class="slds-modal__content slds-p-around--medium">
+                    <div class="slds-grid slds-wrap">
+                        <div class="slds-size--1-of-2 slds-large-size--1-of-2">
+                             <div class="slds-align--absolute-center"> Select Record Type </div>                            
+                        </div>
+                        <div class="slds-size--1-of-2 slds-large-size--1-of-2">
+                            <ui:inputSelect aura:id="selectid">
+                                <aura:iteration items="{!v.lstOfRecordType}" var="contact">                            
+                                    <ui:inputSelectOption text="{!contact}" label="{!contact}"  />
+                                </aura:iteration>
+                            </ui:inputSelect>
+                        </div>&nbsp; &nbsp;
+                    </div>                   
+                </div>
+                
+                <div class="slds-modal__footer">
+                    <lightning:button class="slds-button slds-button--neutral" onclick="{!c.closeFirstModal}"> Cancel </lightning:button>
+                    <lightning:button class="slds-button slds-button--brand" onclick="{!c.openSecondModal}"> Next </lightning:button>
+                </div>
+            </div>
+        </div>
+        <div class="slds-backdrop slds-backdrop--open"></div>
+    </aura:if>
+    
+   <!-- Second Model Box Start -->
+    <aura:if isTrue="{!v.isSecondModalOpen}">
+        <div class="slds-modal__container">
+                <div class="slds-modal__header">
+                    <h2 id="header43" class="slds-text-heading--medium"> New Contact </h2>
+                    <lightning:input type = "text" aura:id="lastName" value="{!v.conObj.LastName}" placeholder="lastName"/>
+                </div>
+            
+                <div class="slds-modal__footer">
+                    <lightning:button class="slds-button slds-button--neutral" onclick="{!c.closeSecondModal}"> Previous </lightning:button>
+                    <lightning:button class="slds-button slds-button--brand" onclick="{!c.openThirdModal}"> Next </lightning:button>
+                </div>
+        </div>  
+    </aura:if>
+    
+    <!-- Third Model Box Start -->
+    <aura:if isTrue="{!v.isThirdModalOpen}">
+        <div class="slds-modal__container">
+                <div class="slds-modal__header">
+                    <button class="slds-button slds-modal__close slds-button--icon-inverse" title="Close" onclick="{!c.closeThirdModal}">
+                        X<span class="slds-assistive-text"> Cancel </span>
+                    </button>
+                    <h2 id="header43" class="slds-text-heading--medium"> New Contact </h2>
+                    <lightning:input type = "text" aura:id="Description" value="{!v.conObj.Description}" placeholder="Description"/>
+                </div>
+            
+                <div class="slds-modal__footer">
+                    <lightning:button class="slds-button slds-button--neutral" onclick="{!c.closeThirdModal}"> Cancel </lightning:button>
+                    <lightning:button class="slds-button slds-button--brand" onclick="{!c.saveContact}"> Save </lightning:button>
+                </div>
+        </div>  
+    </aura:if>
+    
+</aura:component>

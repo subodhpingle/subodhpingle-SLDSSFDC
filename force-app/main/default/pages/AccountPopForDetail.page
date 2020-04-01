@@ -1,0 +1,48 @@
+<apex:page Controller="Modalpopup" id="pg" >
+ <apex:form id="ff">
+   <apex:pageBlock >
+     <apex:pageBlockTable value="{!mycar}" var="ca" id="pbt">
+     <apex:column >
+     <apex:commandLink value="{!ca.Name}" action="{!RecordId}" >    
+     <apex:param value="{!ca.id}" name="nam" assignTo="{!id1}" />     
+       </apex:commandlink>
+     </apex:column>
+     <apex:column value="{!ca.Rating}"/>
+     </apex:pageBlockTable>            
+   </apex:pageBlock>
+   <apex:outputPanel id="output" styleClass="customPopup" layout="block" rendered="{!displayselrecord}">
+       <apex:pageBlock title="Record Detail"> 
+       <apex:pageBlockSection >
+         <apex:pageBlockSectionItem >  
+           <B> Name:</B><apex:inputField value="{!selectedcar.Name}"/>
+           </apex:pageBlockSectionItem>
+           <apex:pageBlockSectionItem >
+           <B> Cost:</B><apex:inputField value="{!selectedcar.Rating}"/>
+         </apex:pageBlockSectionItem> 
+          <apex:pageBlockSectionItem >
+           <apex:commandButton value="Save" action="{!Updatepopup}" rerender="pbt"/>
+           </apex:pageBlockSectionItem>
+           <apex:pageBlockSectionItem >
+            <apex:commandButton title="Close" value="X" action="{!closepopup}" reRender=""/>
+          </apex:pageBlockSectionItem>
+         </apex:pageBlockSection>
+       </apex:pageBlock> 
+       </apex:outputPanel>
+       <style type="text/css">
+        .customPopup {
+           background-color: #6495ed;
+            border-style: solid;
+            border-width: 3px;
+            left: 20%;
+            padding: 5px;
+            position: absolute;            
+            /* These are the 3 css properties you will need to tweak so the pop 
+                                    up displays in the center of the screen. First set the width. Then set 
+                                    margin-left to negative half of what the width is. You can also add 
+                                    the height property for a fixed size pop up.*/
+            width: 500px;           
+            top: 20%;
+        }        
+    </style>
+ </apex:form>
+</apex:page>

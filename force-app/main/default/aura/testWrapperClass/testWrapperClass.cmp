@@ -1,0 +1,49 @@
+<aura:component controller="testWrapperController" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access = "global">
+    <aura:handler name="init" value="{!this}" action="{!c.loadData}"/>
+    
+    <aura:attribute name="wrapperList" type="object"/>
+    <aura:attribute name="isSelectAll" type="boolean" default="false"/>
+    <!--<aura:attribute name="wrapperList" type="List"/> -->
+    <div class="slds-grid slds-grid--align-end slds-m-around--x-small">
+        <button class="slds-button slds-button--brand" onclick="{!c.handleSelectedContacts}"> Delete Selected Contacts </button>
+    </div>
+    <!--https://www.lightningdesignsystem.com/components/data-tables/-->
+    <table class="slds-table slds-table--bordered slds-table--cell-buffer">
+        <thead>
+            <tr class="slds-text-title--caps">
+                <label class="slds-checkbox">
+                    <ui:inputCheckbox value="{!v.isSelectAll}" change="{!c.handleSelectAllContacts}" aura:id="selectAll"/> <!-- change="{!c.handleSelectAllContacts}" -->
+                    <span class="slds-checkbox--faux" />
+                    <span class="slds-form-element__label"></span>
+                </label>
+                <th scope="col">
+                    <div class="slds-truncate" title="First Name">Last Name</div>
+                </th>
+                <th scope="col">
+                    <div class="slds-truncate" title="First Name">Email</div>
+                </th>
+            </tr>
+        </thead>
+        <!--table body start, 
+        Iterate contact list as a <tr>
+        -->
+        <tbody>
+            <aura:iteration items="{!v.wrapperList.conList}" var="con">
+                <tr>
+                    <label class="slds-checkbox">
+                        <ui:inputCheckbox aura:id="checkContact" value="{!con.isSelected}" text="{!con.Id}"/>
+                        <span class="slds-checkbox--faux" />
+                        <span class="slds-form-element__label"></span>
+                    </label>                    
+                    <th scope="row">
+                        <div class="slds-truncate" title="{!con.LastName}">{!con.LastName}</div>
+                    </th>
+                    <th scope="row">
+                        <div class="slds-truncate" title="{!con.Email}">{!con.Email}</div>
+                    </th>
+                </tr>
+            </aura:iteration>
+        </tbody>
+    </table>
+    
+</aura:component>

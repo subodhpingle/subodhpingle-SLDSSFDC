@@ -1,0 +1,59 @@
+<aura:component controller="dataMaskingCtrl">
+  <!--aura init handler , call js "loadData" function on component load, and display contact data on table-->   
+  <aura:handler name="init" value="{!this}" action="{!c.loadData}"/>
+ 
+ <!--Declare Attributes-->  
+  <aura:attribute name="contactList" type="List"/>
+ 
+  <div class="slds-p-around--large">
+    <!--https://www.lightningdesignsystem.com/components/data-tables/-->
+    <table class="slds-table slds-table_bordered slds-table_cell-buffe">
+      <thead>
+        <tr class="slds-text-title_caps">
+          <th scope="col">
+            <div class="slds-truncate" title="Name">Name</div>
+          </th>
+          <th scope="col">
+            <div class="slds-truncate" title="Email">Email</div>
+          </th>
+          <th scope="col">
+            <div class="slds-truncate" title="Department">Department</div>
+          </th>
+          <th scope="col">
+            <div class="slds-truncate" title="First Name">Lead Source</div>
+          </th>
+        </tr>
+      </thead>
+      <!--table body start, 
+        Iterate contact list as a <tr>
+        -->
+      <tbody>
+        <aura:iteration items="{!v.contactList}" var="con">
+          <tr>
+            <th scope="row">
+              <div class="slds-truncate" >
+                <ui:outputText value="{!con.Name}" />
+              </div>
+            </th>
+            <th scope="row">
+              <div class="slds-truncate" >
+                <ui:outputText value="********************" title="{!con.Email}" mouseout="{!c.onMouseOut}" mouseover="{!c.onMouseOver}" aura:id="itemname"/>
+              </div>
+            </th>
+            <th scope="row">
+              <div class="slds-truncate">
+                  <ui:outputText value="********************" title="{!con.Department}" mouseout="{!c.onMouseOut}" mouseover="{!c.onMouseOver}"/>
+                <!--<ui:outputText value="{!con.Department}" /> -->
+              </div>
+            </th>
+            <th scope="row">
+              <div class="slds-truncate" >
+                <ui:outputText value="{!con.LeadSource}" />
+              </div>
+            </th>
+          </tr>
+        </aura:iteration>
+      </tbody>
+    </table>
+  </div>
+</aura:component>

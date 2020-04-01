@@ -1,0 +1,31 @@
+<aura:component controller = 'multiSelectPicklistEdit' implements="force:lightningQuickAction,lightning:actionOverride,force:hasRecordId,force:hasSObjectName">
+	<!--aura:handler name="init" action="{!c.save}" value="{!this}" /-->
+    <aura:attribute name="editActive" type="boolean" default="true"/>
+    
+    <aura:attribute name="recordId" type="Id" />   
+    <aura:handler name="onSaveSuccess" event="force:recordSaveSuccess" action="{!c.hideModal}"/>
+    
+    <aura:if isTrue="{!v.editActive}">
+        <div class="slds-container_fluid">
+            <section>
+                <div aria-hidden="false" id="editPanel" role="dialog" class="slds-modal slds-fade-in-open slds-backdrop slds-backdrop_open" style="display:block;">
+                    <div class="slds-modal__container">
+                        <header class="slds-modal__header">
+                            <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close">
+                                <span class="slds-assistive-text">Close</span>
+                            </button>
+                            <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Edit Expense</h2>
+                        </header>
+                        <div class="slds-modal__content slds-p-around_medium">
+                            <force:recordEdit recordId="{!v.recordId}" aura:id='edit'/>
+                        </div>
+                        <footer class="slds-modal__footer">
+                            <button class="slds-button slds-button_neutral" onclick="{!c.cancel}">Cancel</button> 
+                            <button class="slds-button slds-button_neutral" onclick="{!c.save}">Save</button> 
+                        </footer>  
+                    </div>
+                </div>
+            </section>
+        </div>
+    </aura:if>
+</aura:component>

@@ -1,0 +1,13 @@
+<aura:component >
+	 <aura:attribute name="item" type="Expense__c"/>
+    
+     Name: {!v.item.name}
+     Price : <lightning:formattedNumber value="{!v.item.name}" />
+     Quantity : <lightning:formattedNumber value="{!v.item.quantity}" />
+     Packed : {!v.item.Packed} 
+    
+    <lightning:input type="toggle"                            
+                         label="Packed?"                           
+                         name="Packed"                         
+                         checked="{!v.item.Packed}" />
+</aura:component>

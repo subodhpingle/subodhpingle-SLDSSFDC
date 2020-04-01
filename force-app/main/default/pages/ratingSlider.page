@@ -1,0 +1,35 @@
+<apex:page standardController="Account">
+
+<apex:includeScript value="{!URLFOR($Resource.jquery, '/js/jquery-1.9.1.js')}"/>
+<apex:includeScript value="{!URLFOR($Resource.jquery, '/js/jquery-ui-1.10.3.custom.min.js')}"/>
+<apex:stylesheet value="{!URLFOR($Resource.jquery, '/css/ui-lightness/jquery-ui-1.10.3.custom.css')}"/>
+
+<apex:form id="theForm">
+<apex:pageBlock id="theBlock">
+<apex:pageBlockSection id="theSection">
+    <apex:inputField value="{!Account.NumberOfEmployees}" id="value"/>
+    <div id="slider"/>
+</apex:pageBlockSection>
+</apex:pageBlock>
+</apex:form>
+
+
+<script>
+    function getCleanName(theName)
+    {
+        return '#' + theName.replace(/:/gi,"\\:");
+    }
+    var valueField = getCleanName( '{!$Component.theForm.theBlock.theSection.value}' );
+
+    $j = jQuery.noConflict();
+    $j( "#slider" ).slider( {enable: true, min: 1, max: 10, orientation: "vertical", value: 10} );
+    $j( "#slider" ).on( "slidechange",
+        function( event, ui )
+        {
+            var value = $j( "#slider" ).slider( "option", "value" );
+            $j( valueField ).val( value );
+        }
+    );
+</script>
+
+</apex:page>

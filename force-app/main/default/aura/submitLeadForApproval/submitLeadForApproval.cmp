@@ -1,0 +1,33 @@
+<aura:component controller="submitLeadForApprovalClass" implements="force:lightningQuickActionWithoutHeader,force:hasRecordId,flexipage:availableForAllPageTypes">
+	<aura:attribute name="show" type="boolean" default="false"  />
+    <aura:attribute name="ErrorResult" type="String" default=""  />
+    <aura:attribute name="inventory" type="Lead"/>
+       
+    <div class="slds-page-header">
+		<div class="slds-media">
+			<div class="slds-media__body" style="text-align:center;padding-top:10%;padding-bottom:7%">
+                 <aura:if isTrue="{!not(v.show)}">
+				<h1 class="slds-page-header__title slds-truncate slds-align-middle" >Do you want to raise the ticket ?</h1>
+				<p class="slds-text-body_small slds-line-height_reset"> Note: Your record will be locked after submitting.</p>
+                	<aura:set attribute="else">
+      					<h1 class="slds-page-header__title slds-truncate slds-align-middle" >Info</h1>
+                		<div class="slds-text-body_regular">{!v.ErrorResult}</div>
+                	</aura:set>
+                </aura:if>    
+			</div>
+		</div>
+	</div>
+    <div class="slds-col modal-footer slds-modal__footer" >     
+    <aura:if isTrue="{!not(v.show)}">
+    <div id="Yes" style="text-align:left;float: left;">
+    <lightning:button variant="brand" label="Yes" onclick="{! c.applychanges }" />
+    </div>
+	<div id="No" style="text-align:right">        
+    <lightning:button variant="neutral" label="No" onclick="{! c.No }" />  
+    </div>
+    <aura:set attribute="else">
+    	<lightning:button variant="brand" label="Cancel" onclick="{! c.No }" />
+    </aura:set>   
+    </aura:if>    
+</div>
+</aura:component>

@@ -1,0 +1,14 @@
+<aura:component controller="PressCallorCount" implements="flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId" access="global"  >
+    <aura:attribute name="inventory" type="Account"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+   
+<div class="slds-page-header" role="banner">
+   <h1 class="slds-page-heading--label">Update Rating from here ?</h1>
+</div>
+    
+    <br/>
+   <ui:inputText aura:id="itemname" updateOn="change" label="Enter Closing Comments here" class="slds-input" labelClass="slds-form-element__label" value="{!v.inventory.firstname }" />
+   <lightning:button label="Yes" onclick="{!c.requestCall}" class="slds-m-top--medium"/>
+   <lightning:button label="No" onclick="{!c.cancelCall}" class="slds-m-top--medium"/>
+ 
+</aura:component>

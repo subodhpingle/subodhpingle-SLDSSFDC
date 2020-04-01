@@ -1,0 +1,34 @@
+<aura:component >
+   <p> Let learn something about styling components here </p> <br/>
+   <ltng:require styles="/resource/css"  />
+    
+	<p> My name is Subodh </p>
+    <div class = 'div1'>
+        	<p> I am from div 1 </p>
+    </div>
+    
+    <div class = 'div2'>
+        	<p> I am from div 2 </p>
+    </div>
+    
+    <div class = 'div3'>
+        	<p> I am from div 2 </p>
+    </div>
+    <!--<p> Let learn something about attributes and functions here </p> <br/>
+    
+    <aura:attribute name = "a1" type = "string" default = "subodh pingle" />
+-->
+    
+    
+    <aura:attribute name='change' type="boolean" default="false" />
+    <aura:if isTrue="{!v.change}" >
+        <ui:button label="I am true" />      
+        <aura:set attribute="else">
+            	<ui:button label="I am False" />
+        </aura:set>
+    </aura:if> 
+    
+    
+    {!$browser.isTablet}
+    {!$browser.formFactor}
+</aura:component>

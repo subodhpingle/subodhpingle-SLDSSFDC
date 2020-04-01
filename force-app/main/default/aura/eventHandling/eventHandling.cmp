@@ -1,0 +1,8 @@
+<aura:component >
+    <aura:attribute name="text" type="String" default="Just a string."/>
+    <input type="button" name = "textNew" value="Flawed HTML Button" press="{!c.handleClicknew}"/>
+    <br/>
+    <lightning:button label="Framework Button" onclick="{!c.handleClick}"/>
+    <br/>
+    {!v.text}
+</aura:component>

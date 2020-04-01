@@ -1,0 +1,39 @@
+<aura:component >
+    <aura:attribute name = 'selTabId' type="string" default = '1'/>
+        
+    <lightning:tabset selectedTabId="{!v.selTabId}" >
+        <lightning:tab label="Fruits" id="1">
+            <p>Apple</p>
+            <p>Banana</p>
+            <p>Mango</p>
+        </lightning:tab>
+        
+        <lightning:tab label="Cars" id="2">
+            <p>Audi</p>
+            <p>BMW</p>
+            <p>Renault</p>
+        </lightning:tab>
+        
+        <lightning:tab label="Industries" id="3">
+            <p>Capgemini</p>
+            <p>Cognizant</p>
+            <p>TCS</p>
+        </lightning:tab>
+        
+        <lightning:tab label="Laptops" id="4">
+            <p>Dell</p>
+            <p>HP</p>
+            <p>Lenovo</p>
+        </lightning:tab>
+    </lightning:tabset>
+    
+    <div class="slds-clearfix">
+      <div class="slds-float_left">
+          <!--disabled the back button on first Tab-->    
+        <lightning:button disabled="{!v.selTabId == '1'}" variant="neutral" label="Back" onclick="{!c.back}" />
+      </div>
+        <lightning:button variant="brand" disabled="{!v.selTabId == '4'}" label="Next" onclick="{!c.next}" />
+    </div>
+    
+    
+</aura:component>

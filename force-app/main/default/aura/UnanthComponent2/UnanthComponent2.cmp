@@ -1,0 +1,4 @@
+<aura:component >
+	<p> this is second lightning component </p>  
+    	<ltng:require styles="/resource/css"  />
+</aura:component>

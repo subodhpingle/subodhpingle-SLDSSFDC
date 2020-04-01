@@ -1,0 +1,12 @@
+<aura:component controller="addChildController" Implements="flexipage:availableForRecordHome,force:hasRecordId,force:lightningQuickAction">
+    <!-- init aura:handler action[doInit] auto call on component load -->  
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    
+  <!-- 1."ChildRecordList" attibute store the list of child record. --> 
+    <aura:attribute name="ChildRecordList" type="List" />
+    
+    <!--Use a data table from the Lightning Design System:
+    https://www.lightningdesignsystem.com/components/data-tables/ -->
+    
+    
+</aura:component>

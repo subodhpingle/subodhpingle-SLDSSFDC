@@ -1,0 +1,36 @@
+<aura:component implements="flexipage:availableForAllPageTypes,lightning:actionOverride,flexipage:availableForRecordHome,force:hasRecordId" access="global">
+	
+    <aura:attribute name="opportunity" type="Object" 
+                    description="The opportunity record object to be displayed"/>
+	<aura:attribute name="opportunityRecord" type="Object" 
+                    description="A simplified view opportunity record object to be displayed"/>
+	<aura:attribute name="recordSaveError" type="String" 
+                    description="An error message bound to force:recordData"/>
+    
+    <!-- recordId="{!v.recordId}" mode="EDIT"-->
+    <force:recordData aura:id="opprecord" layoutType="FULL"  
+                      targetError="{!v.recordSaveError}" 
+                      targetRecord="{!v.opportunity}" 
+                      targetFields ="{!v.opportunityRecord}" 
+                      />
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    
+    <!-- Opportunity input form to insert values inside it -->
+    <lightning:card iconName="action:new_opportunity" title="Create Opportunity">
+        <div class="slds-p-horizontal--small">
+            <lightning:input aura:id="opportunityField" label="Opportunity Name" value="{!v.opportunityRecord.Name}"/>
+            <lightning:input aura:id="opportunityField" label="Close Date" value="{!v.opportunityRecord.CloseDate}"/>
+            <lightning:input aura:id="opportunityField" label="Description" value="{!v.opportunityRecord.Description}"/>
+            <br/>
+            <lightning:button label="Save Opportunity" variant="brand" onclick="{!c.handleSaveOpportunity}"/>
+        </div>
+    </lightning:card>
+    
+    <!-- Display Lightning Data Service errors -->
+    <aura:if isTrue="{!not(empty(v.recordSaveError))}">
+        <div class="recordSaveError">
+            {!v.recordSaveError}
+        </div>
+    </aura:if>
+    
+</aura:component>

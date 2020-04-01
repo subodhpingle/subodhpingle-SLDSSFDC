@@ -1,0 +1,5 @@
+<aura:component controller="accRecController" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction">
+    <aura:attribute name="recordId" type="Id" />
+    <aura:attribute name="phone" type="String" />
+    <lightning:button label="Create Contact" variant="brand" onclick="{!c.createContact}"/>
+</aura:component>

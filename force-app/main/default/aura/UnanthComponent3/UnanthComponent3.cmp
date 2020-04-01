@@ -1,0 +1,6 @@
+<aura:component >
+    <c:UnanthComponent />
+    <c:UnanthComponent2 />
+    
+    this is Wrapper Component
+</aura:component>

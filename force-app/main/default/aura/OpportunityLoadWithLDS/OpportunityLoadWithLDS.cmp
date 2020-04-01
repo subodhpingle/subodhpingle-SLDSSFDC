@@ -1,0 +1,36 @@
+<aura:component implements="flexipage:availableForAllPageTypes,lightning:actionOverride,flexipage:availableForRecordHome,force:hasRecordId" access="global">
+	
+    <aura:attribute name="opportunity" type="Object" 
+                    description="The opportunity record object to be displayed"/>
+	<aura:attribute name="opportunityRecord" type="Object" 
+                    description="A simplified view opportunity record object to be displayed"/>
+	<aura:attribute name="recordSaveError" type="String" 
+                    description="An error message bound to force:recordData"/>
+    
+    <force:recordData aura:id="record" layoutType="FULL" recordId="{!v.recordId}" 
+                      targetError="{!v.recordSaveError}" 
+                      targetRecord="{!v.opportunity}" 
+                      targetFields ="{!v.opportunityRecord}" 
+                      mode="VIEW"
+                      />
+    
+    <!-- Display a lightning card with details about the record -->
+	<lightning:card iconName="standard:opportunity" title="{!v.opportunityRecord.Name}" >
+        <div class="slds-p-horizontal--small">
+            <p class="slds-text-heading--small">
+                <lightning:formattedText title="Opportunity Description" 
+                                         value="{!v.opportunityRecord.Description}" /></p>
+            <p class="slds-text-heading--small">
+                <lightning:formattedText title="Opportunity Close Date" 
+                                         value="{!v.opportunityRecord.CloseDate}" /></p>
+        </div>
+	</lightning:card>
+    
+    <!-- Display Lightning Data Service errors, if any -->
+    <aura:if isTrue="{!not(empty(v.recordError))}">
+        <div class="recordSaveError">
+            {!v.recordSaveError}
+        </div>
+    </aura:if>
+    
+</aura:component>

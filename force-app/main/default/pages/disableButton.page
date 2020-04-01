@@ -1,0 +1,6 @@
+<apex:page standardController="Opportunity">
+
+<apeX:detail subject="{!Opportunity.Id}" relatedList="true"/>
+
+
+</apex:page>

@@ -1,0 +1,5 @@
+<aura:component >
+    <aura:attribute name="messageString" type="String" default="parent String"/>
+    {!v.messageString}
+    <c:ChildComp/>
+</aura:component>

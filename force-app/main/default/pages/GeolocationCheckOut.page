@@ -1,0 +1,30 @@
+<apex:page standardController="Event" extensions="GeolocationCheckOut">
+ 
+    <script type='text/javascript' src='/canvas/sdk/js/publisher.js'></script>
+ 
+    <script>
+         window.onload = function(){
+ 
+            var currPosition;
+            var lat;
+            var lng;
+            var showPosition = function(position) {
+                currPosition = position;
+                lat = currPosition.coords.latitude;
+                lng = currPosition.coords.longitude;
+ 
+                Visualforce.remoting.Manager.invokeAction(
+                '{!$RemoteAction.GeolocationCheckOut.updateGeolocation}',
+                '{!eventId}', lat, lng,
+                function(result, event) {
+                    if (event.status) {
+                        Sfdc.canvas.publisher.publish({ name : "publisher.close", payload : { refresh:"true" }});
+                    }
+                });
+            };
+ 
+            navigator.geolocation.getCurrentPosition(showPosition);
+        }
+    </script>
+ 
+</apex:page>

@@ -1,0 +1,32 @@
+<aura:component controller="solutionDemoController" implements="flexipage:availableForAllPageTypes,force:hasRecordId">
+        
+    <aura:attribute name="cases" type="List" />
+    <aura:attribute name="openCaseCount" type="Integer" default = "0" />
+    
+    <!--<aura:attribute name="replacementScore" type="Integer" default = "0"/>
+ 	<aura:attribute name="focScore" type="Integer" default = "0" />
+    <aura:attribute name="dataScore" type="Integer" default = "0" /> -->
+    
+    <aura:attribute name="recordId" type="string" />    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+       
+    	<!-- Use a data table from the Lightning Design System: https://www.lightningdesignsystem.com/components/data-tables/ -->
+    	<div class="slds-grid slds-wrap">
+            <div class="slds-size_1-of-4">
+                <div class="slds-box slds-box_x-small slds-text-align_center slds-m-around_x-small  slds-text-color_error"><strong> Open Case - {!v.openCaseCount}</strong></div>
+            </div>
+    
+           <!-- <div class="slds-size_1-of-4">
+                <div class="slds-box slds-box_x-small slds-text-align_center slds-m-around_x-small  slds-text-color_error"><strong> Replacement Score - {!v.replacementScore}%</strong></div>
+            </div>
+            
+            <div class="slds-size_1-of-4">
+                <div class="slds-box slds-box_x-small slds-text-align_center slds-m-around_x-small  slds-text-color_error"><strong> FOC Score - {!v.focScore}%</strong></div>
+            </div>
+            
+            <div class="slds-size_1-of-4">
+                <div class="slds-box slds-box_x-small slds-text-align_center slds-m-around_x-small  slds-text-color_error"><strong> Data Score - {!v.dataScore}%</strong></div>
+            </div>
+			-->
+       </div>
+</aura:component>

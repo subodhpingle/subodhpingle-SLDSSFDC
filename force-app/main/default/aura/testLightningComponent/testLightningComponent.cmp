@@ -1,0 +1,15 @@
+<aura:component >
+	<div class = 'red'>
+        	this is RED
+        <p>
+            	this is RED Paragraph
+        </p>
+    </div>    
+    <div class = 'blue'>
+        	this is BLUE
+        <p>
+            	this is BLUE Paragraph
+        </p>
+    </div>
+    
+</aura:component>

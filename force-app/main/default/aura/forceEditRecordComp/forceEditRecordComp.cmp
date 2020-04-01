@@ -1,0 +1,39 @@
+<aura:component controller="AccountListController"
+                implements="flexipage:availableForAllPageTypes,lightning:actionOverride,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:appHostable" >
+    
+    <aura:attribute type="Account[]" name="acctList"/>
+    
+    <aura:handler name="init" value="{!this}" action="{!c.fetchAccounts}"/>
+    
+    <table class="slds-table slds-table_bordered slds-table_cell-buffer">
+        <thead>
+            <tr class="slds-text-title_caps">
+                <th scope="col">
+                    <div class="slds-truncate" title="Account Name">Account Name</div>
+                </th>
+                <th scope="col">
+                    <div class="slds-truncate" title="Account Name">Industry</div>
+                </th>
+                <th scope="col">
+                    <div class="slds-truncate" title="Action">Actions</div>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+         <aura:iteration items="{!v.acctList}" var="a">
+                <tr>
+                    <td data-label="Account Name">
+                        <div class="slds-truncate" title="">{!a.Name}</div>
+                    </td>
+                    <td data-label="Industry">
+                        <div class="slds-truncate" title="">{!a.Industry}</div>
+                    </td>
+                    <td>
+                     <button class="slds-button slds-button_brand" onclick="{!c.editAccount}" id="{!a.Id}">Edit</button>
+                    </td>                        
+                </tr>
+            </aura:iteration>
+        </tbody>
+    </table>
+    
+</aura:component>

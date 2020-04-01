@@ -1,0 +1,26 @@
+<aura:component>
+ 
+    <aura:if isTrue="{!$Browser.isTablet}">
+    	You are using a tablet device 
+        ( <lightning:icon iconName="utility:tablet_portrait" size="x-small" alternativeText="Indicates approval"/> ).
+    </aura:if>
+    <aura:if isTrue="{!$Browser.isPhone}">
+        You are using a phone 
+        ( <lightning:icon iconName="utility:phone_portrait" size="x-small" alternativeText="Indicates approval"/> ).
+        This message is rendered using isPhone <br />
+    </aura:if>
+    <aura:if isTrue="{!$Browser.isIPhone}">
+        You are using an IPhone, If it is IPhone X, _/\_ <br />
+    </aura:if> 
+    <aura:if isTrue="{!$Browser.formFactor == 'DESKTOP'}">
+    	You are using a DESKTOP 
+        (<lightning:icon iconName="utility:desktop" size="x-small" alternativeText="Indicates approval"/>)
+        Browser device
+    </aura:if>
+    <aura:if isTrue="{!$Browser.formFactor == 'PHONE'}">
+    	You are using a Phone, This message is rendered using formFactor
+    </aura:if>
+    <aura:if isTrue="{!$Browser.formFactor == 'TABLET'}">
+    	You are using a Table device
+    </aura:if>
+</aura:component>

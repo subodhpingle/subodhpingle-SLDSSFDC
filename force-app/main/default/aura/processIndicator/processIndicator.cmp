@@ -1,0 +1,38 @@
+<!--ProgressIndicator.cmp-->
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global">
+    <aura:attribute name="selectedStep" type="string" default="step1"/>
+    <div class="slds-m-around_xx-large">
+         
+        <lightning:progressIndicator currentStep="{!v.selectedStep}" type="base">
+            <lightning:progressStep label="Step One" value="step1" onclick="{!c.selectStep1}"/>
+            <lightning:progressStep label="Step Two" value="step2" onclick="{!c.selectStep2}"/>
+            <lightning:progressStep label="Step Three" value="step3" onclick="{!c.selectStep3}"/>
+            <lightning:progressStep label="Step Four" value="step4" onclick="{!c.selectStep4}"/>
+        </lightning:progressIndicator>
+         
+        <div class="slds-p-around--medium">
+            <div class="{!v.selectedStep == 'step1' ? 'slds-show' : 'slds-hide'}">
+                <p><b>Step 1</b></p>
+            </div>
+            <div class="{!v.selectedStep == 'step2' ? 'slds-show' : 'slds-hide'}">
+                <p><b>Step 2</b></p>
+            </div>
+            <div class="{!v.selectedStep == 'step3' ? 'slds-show' : 'slds-hide'}">
+                <p><b>Step 3</b></p>
+            </div>
+            <div class="{!v.selectedStep == 'step4' ? 'slds-show' : 'slds-hide'}">
+                <p><b>Step 4</b></p>
+            </div>
+        </div>
+         
+        <div>
+            <button disabled="{!v.selectedStep != 'step1' ? '' : 'disabled'}" class="slds-button slds-button--neutral" onclick="{!c.handlePrev}">Back</button>  
+            <aura:if isTrue="{!v.selectedStep != 'step4'}">
+                <button class="slds-button slds-button--brand" onclick="{!c.handleNext}">Next</button>
+            </aura:if>
+            <aura:if isTrue="{!v.selectedStep == 'step4'}">   
+                <button class="slds-button slds-button--brand" onclick="{!c.handleFinish}">Finish</button>  
+            </aura:if>
+        </div>
+    </div>
+</aura:component>

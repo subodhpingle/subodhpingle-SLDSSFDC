@@ -1,0 +1,64 @@
+<aura:component implements="force:lightningQuickActionWithoutHeader,force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes" controller="prepopulateAccFieldsController_new" access="global">
+	<aura:attribute name="lstOfRecordType" type="String[]" />
+    <aura:attribute name="showRecordTypeSelection" type="boolean" default="false" />
+    <aura:attribute name="selectedRecordTypeId" type="String" default="false" />
+    <!--<aura:handler name="init" value="{!this}" action="{!c.fetchListOfRecordTypes}"/> -->
+    
+   <div>
+        <lightning:button class="new-button" label="New Contact" onclick="{!c.fetchListOfRecordTypes}"/>
+    </div>
+    
+   <!-- Model Box Start -->    
+    <aura:if isTrue="{!v.showRecordTypeSelection}">
+        <div role="dialog" tabindex="-1" aria-labelledby="header43" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">
+                <div class="slds-modal__header">
+                    <button class="slds-button slds-modal__close slds-button--icon-inverse" title="Close" onclick="{!c.closeModal}">
+                        X<span class="slds-assistive-text">Cancel</span>
+                    </button>
+                    <h2 id="header43" class="slds-text-heading--medium">New Contact</h2>
+                </div>
+                
+                <div class="slds-modal__content slds-p-around--medium">
+                    <fieldset class="slds-form-element">
+                        <div class="slds-form-element__control">
+                            <aura:iteration items="{!v.lstOfRecordType}" var="rt"> 
+                                <span class="slds-radio">
+                                    <input type="radio" id="{!rt.Id}" value="{!rt.Id}" name="options" 
+                                           checked="{!rt.Id == v.selectedRecordTypeId}"
+                                           onclick="{!c.changeRecordType}" />
+                                    <label class="slds-radio__label" for="{!rt.Id}">
+                                        <span class="slds-radio_faux"></span>
+                                        <span class="slds-form-element__label">{!rt.Name}</span>
+                                        <div class="changeRecordTypeItemDescription changeRecordTypeLabel topdown-radio--label">
+                                        	{!rt.Description}
+                                        </div>
+                                    </label>
+                                </span>
+                            </aura:iteration>
+                        </div>
+                    </fieldset>
+                    
+                    <div class="slds-grid slds-wrap slds-hide">
+                        <div class="slds-size--1-of-2 slds-large-size--1-of-2">
+                             <div class="slds-align--absolute-center">Select a Record Type</div>                            
+                        </div>
+                        <div class="slds-size--1-of-2 slds-large-size--1-of-2">
+                            <ui:inputSelect aura:id="selectid">
+                                <aura:iteration items="{!v.lstOfRecordType}" var="case">                            
+                                    <ui:inputSelectOption text="{!case.Id}" label="{!case.Name}"  />
+                                </aura:iteration>
+                            </ui:inputSelect>
+                        </div>&nbsp; &nbsp;
+                    </div>                   
+                </div>
+                
+                <div class="slds-modal__footer">
+                    <lightning:button class="slds-button slds-button--neutral" onclick="{!c.closeModal}">Cancel</lightning:button>
+                    <lightning:button class="slds-button slds-button--brand" onclick="{!c.createRecord}">Next</lightning:button>
+                </div>
+            </div>
+        </div>
+        <div class="slds-backdrop slds-backdrop--open"></div>
+        </aura:if>
+</aura:component>

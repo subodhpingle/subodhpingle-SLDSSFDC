@@ -1,0 +1,21 @@
+<apex:page standardController="Opportunity" sidebar="false" showHeader="false"> 
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js">
+
+<script>
+    
+    $(document).ready(function)
+    {
+        var test = $("tr.tertiaryPalette:first"); 
+        test.nextAll().find('a.actionLink[title*="Approve"]').css('display','none');
+        test.nextAll().find('span.actionLink').css('color','BLACK');
+        test.find('span.actionLink').css('color','BLACK');
+        $("tr.tertiaryPalette:first").css('background-color','RED');
+        $("tr.tertiaryPalette:first").css('border-color','YELLOW');
+         
+    });
+    
+</script>
+
+<apex:relatedList list="ProcessSteps" pageSize="100"/>
+
+</apex:page>

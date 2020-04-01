@@ -1,0 +1,8 @@
+<apex:page standardController="Account">
+    <apex:detail relatedList="false" />
+    <apex:variable var="count" value="{!0}" />
+    <apex:repeat value="{!Account.Accounts__r}" var="row">
+        <apex:variable var="count" value="{!count+1}" />
+    </apex:repeat>
+    <apex:relatedList list="Accounts__r" rendered="{!IF(count > 0, TRUE, FALSE)}" />
+</apex:page>

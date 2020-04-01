@@ -1,0 +1,7 @@
+<aura:component controller="validateCountryIDController" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+    <aura:attribute name="inventory" type="Address__c"/>
+    <aura:attribute name="myAttribute" type="String"/>
+    
+    <ui:inputText aura:id="myAtt" updateOn="change" value="{!v.myAttribute}" label="Please enter valid Country ID" class="slds-input" labelClass="slds-form-element__label" />
+    <lightning:button label="Validate" onclick="{!c.requestCall}" class="slds-m-top--medium"/>
+</aura:component>
