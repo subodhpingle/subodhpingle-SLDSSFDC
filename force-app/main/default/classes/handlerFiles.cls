@@ -31,11 +31,6 @@ public class handlerFiles{
                     System.debug('This is getNumDml :=  ' + numErrors);
                     throw new FileException(de.getMessage());
                 }
-                catch(Exception e){
-                    Integer numErrors = e.getNumDml();
-                    System.debug('This is getNumDml :=  ' + numErrors);
-                    throw new FileException(e.getMessage());
-                }
             }
         }
         //if FILE is deleted
